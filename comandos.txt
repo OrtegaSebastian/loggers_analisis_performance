@@ -1,0 +1,36 @@
+//nodemon 
+
+nodemon server.js
+
+
+//forever
+
+
+forever server.js
+
+//el servidor levanta pero no encuentra las rutas por los errores que tengo de la entrega 
+//anterior que aun no los hemos visto para corregir
+// es lo que te comente anteriormente problemas con ruteo no encuentra el login
+
+
+ forever list 
+
+
+//pm2 
+
+pm2 start server.js --name="desf-fork" --watch 8080
+
+
+pm2 start server.js --name="desf-cluster" --watch 8081
+
+
+pm2 list
+
+
+//ngninx
+
+//se redirigieron las consultas al /api/randoms acá hay un problema
+// enrutado que viene arrastrado de la entrega anterior.
+
+//no sé si esta correcta del todo la entrega fue muy confusa la explicación del profesor  hice lo que pude
+
