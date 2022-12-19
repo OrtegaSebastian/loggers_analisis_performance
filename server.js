@@ -6,6 +6,8 @@ const session = require('express-session');
 const argv = require('argv')
 const ParseArgs = require('minimist')
 const compression = require('compression')
+const data = require('./routers/router')
+
 
 //DotEnv
 if(process.env.NODE_ENV !='Production'){
@@ -170,8 +172,11 @@ app.get('/logout', routes.getLogout);
 
 //Desafío con y sin compression
 
+
+//no lo muestra
 app.get('/info',router,compression(),(req,res)=>{
     res.send(data)
+    console.log(data)
 })
 
 // app.get('/info',router,compression(),(req,res)=>{

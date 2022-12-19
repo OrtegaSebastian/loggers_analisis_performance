@@ -18,6 +18,7 @@ router.get('/info', async (req, res) => {
     }
 
     res.render('info', {data: data})
+    console.log(data)
 })
 router.get('/randoms',(req,res)=>{
     const {cantidad} = req.query;
