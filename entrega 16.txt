@@ -1,0 +1,108 @@
+//problema, me genera los archivos pero no los procesa.
+1) El perfilamiento del servidor, realizando el test con --prof de node.js. Analizar los resultados obtenidos luego de procesarlos con --prof-process.  
+
+
+artillery quick \
+    --count 50 \
+    --num 40 \
+    https://localhost:8080/info
+    > result pruebas.txt
+
+
+
+    //$ artillery quick \
+>     --count 50 \
+>     --num 40 \
+>     > result pruebas.txt    https://localhost:8080/info
+Phase started: unnamed (index: 0, duration: 1s) 17:45:54(-0300)
+
+Phase completed: unnamed (index: 0, duration: 1s) 17:45:55(-0300)
+
+--------------------------------------
+Metrics for period to: 17:46:00(-0300) (width: 0.982s)
+--------------------------------------
+
+errors.EPROTO: ................................................................. 50
+http.request_rate: ............................................................. 50/sec
+http.requests: ................................................................. 50
+vusers.created: ................................................................ 50
+vusers.created_by_name.0: ...................................................... 50
+vusers.failed: ................................................................. 50
+
+
+Warning: multiple batches of metrics for period 1671482750000 2022-12-19T20:45:50.000Z
+All VUs finished. Total time: 2 seconds
+
+--------------------------------
+Summary report @ 17:45:57(-0300)
+--------------------------------
+
+errors.EPROTO: ................................................................. 50
+http.request_rate: ............................................................. 50/sec
+http.requests: ................................................................. 50
+vusers.created: ................................................................ 50
+vusers.created_by_name.0: ...................................................... 50
+vusers.failed: ................................................................. 50
+
+
+// para hacer uso de autocannon por cada conexion muestra por consola la informaciónn
+$ node benchmark.js
+Running 20s test @ http://localhost:8080/info
+100 connections
+
+┌─────────┬────────┬────────┬────────┬────────┬──────────┬──────────┬────────┐
+│ Stat    │ 2.5%   │ 50%    │ 97.5%  │ 99%    │ Avg      │ Stdev    │ Max    │
+├─────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼────────┤
+│ Latency │ 225 ms │ 261 ms │ 516 ms │ 576 ms │ 287.5 ms │ 74.19 ms │ 814 ms │
+└─────────┴────────┴────────┴────────┴────────┴──────────┴──────────┴────────┘
+┌───────────┬────────┬────────┬────────┬────────┬────────┬─────────┬────────┐
+│ Stat      │ 1%     │ 2.5%   │ 50%    │ 97.5%  │ Avg    │ Stdev   │ Min    │
+├───────────┼────────┼────────┼────────┼────────┼────────┼─────────┼────────┤
+│ Req/Sec   │ 100    │ 100    │ 351    │ 444    │ 346.55 │ 78.04   │ 100    │
+├───────────┼────────┼────────┼────────┼────────┼────────┼─────────┼────────┤
+│ Bytes/Sec │ 127 kB │ 127 kB │ 447 kB │ 566 kB │ 441 kB │ 99.4 kB │ 127 kB │
+└───────────┴────────┴────────┴────────┴────────┴────────┴─────────┴────────┘
+
+Req/Bytes counts sampled once per second.
+# of samples: 20
+
+7k requests in 20.15s, 8.83 MB read
+
+//revisar imagen llamada modo_inspect.png
+2) El perfilamiento del servidor con el modo inspector de node.js --inspect.
+ Revisar el tiempo de los procesos menos performantes sobre el archivo fuente de inspección.
+
+
+//Revisar imagen
+ 3) El diagrama de flama con 0x, emulando la carga con Autocannon con los mismos parámetros anteriores.
+    $ npm start
+
+    //en otra cli mientras el server esta levantado.
+    $npm test
+
+> re-entrega-passport@1.0.0 start
+> 0x server.js
+
+ProfilingBASE DE DATOS CONECTADA
+Server running on port 8080
+{
+  arguments: [
+    'C:\\Program Files\\nodejs\\node.exe',
+    'C:\\Users\\Ortega\\Documents\\CODERHOUSE\\backend\\loggers_gzip_analisis_performance\\server.js'
+  ],
+  platform: 'win32',
+  'node-version': 'v16.13.1',
+  memory: 100855808,
+  execpath: 'C:\\Program Files\\nodejs\\node.exe',
+  pid: 10936,
+  folder: 'C:\\Program Files\\nodejs\\node.exe',
+  cpu: undefined
+}
+// revisar archivo flame.png
+
+
+ Concluyo que trabajo con log4js porque me resulta mas vistoso y sencillo , 
+ y con respecto a las otras herramientas me quedaría con autocannon ya que me gusta como
+ estan hechos los recuadros de graficos
+
+
