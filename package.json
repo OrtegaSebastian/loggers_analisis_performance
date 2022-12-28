@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "helpers/benchmark.js",
-    "start":"0x server.js"
+    "test": "npm start"   
   },
   "keywords": [],
   "author": "",
