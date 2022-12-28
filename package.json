@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm start"   
+    "test": "npm start"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "log4js": "^6.7.1",
     "minimist": "^1.2.7",
     "mongoose": "^6.7.5",
+    "mysql2": "^2.3.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "yargs": "^17.6.2"

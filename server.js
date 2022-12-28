@@ -7,7 +7,7 @@ const argv = require('argv')
 const ParseArgs = require('minimist')
 const compression = require('compression')
 const data = require('./routers/router')
-
+const pool = require("./railwayCon")
 
 //DotEnv
 if(process.env.NODE_ENV !='Production'){
@@ -204,6 +204,21 @@ const options ={
 }
 
 
+//railway no entendi como aplicarlo
+
+console.log(pool);
+app.get('/railway', async(req,res)=>{
+    const rows = await pool('users').select('*')
+
+    res.json('rows')
+})
+
+app.post('/post', async(req,res)=>{
+    const {nombre}= req.body;
+
+    const result = await pool('users').inser({name: nombre})
+    res.json(result)
+})
 
 // ------------------------------------------------------------------------------
 //  LISTEN SERVER
